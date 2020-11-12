@@ -25,7 +25,7 @@ description description description
 | POP BC | 0x07 | 1 | | |
 | POP DE | 0x08 | 1 | | |
 | POPA | 0x09 | 1 | Pop All | |
-| MOV A, A | 0x0A | 1 | Move | source = destination |
+| MOV A, A | 0x0A | 1 | Move | destination = source |
 | MOV A, B | 0x0B | 1 | | |
 | MOV A, C | 0x0C | 1 | | |
 | MOV A, D | 0x0D | 1 | | |
@@ -74,3 +74,49 @@ description description description
 | MOV L, E | 0x38 | 1 | | |
 | MOV L, H | 0x39 | 1 | | |
 | MOV L, L | 0x3A | 1 | | |
+| MOV (HL), A | 0x3B | 1 | | |
+| MOV (HL), B | 0x3C | 1 | | |
+| MOV (HL), C | 0x3D | 1 | | |
+| MOV (HL), D | 0x3E | 1 | | |
+| MOV (HL), E | 0x3F | 1 | | |
+| MOV (HL), H | 0x40 | 1 | | |
+| MOV (HL), L | 0x41 | 1 | | |
+| MOV A, NN | 0x42 0xNN | 2 | | |
+| MOV B, NN | 0x43 0xNN | 2 | | |
+| MOV C, NN | 0x44 0xNN | 2 | | |
+| MOV D, NN | 0x45 0xNN | 2 | | |
+| MOV E, NN | 0x46 0xNN | 2 | | |
+| MOV H, NN | 0x47 0xNN | 2 | | |
+| MOV L, NN | 0x48 0xNN | 2 | | |
+| MOV (HL), NN | 0x49 0xNN | 2 | | |
+| MOV A, (HL) | 0x4A | 1 | | |
+| MOV B, (HL) | 0x4B | 1 | | |
+| MOV C, (HL) | 0x4C | 1 | | |
+| MOV D, (HL) | 0x4D | 1 | | |
+| MOV E, (HL) | 0x4E | 1 | | |
+| MOV H, (HL) | 0x4F | 1 | | |
+| MOV L, (HL) | 0x50 | 1 | | |
+| MOV SP, NNNN | 0x51 0xNN 0xNN | 3 | | |
+| MOV SP, HL | 0x52 | 1 | | |
+| MOV HL, SP | 0x53 | 1 | | |
+| MOV A, (BC) | 0x54 | 1 | | |
+| MOV A, (DE) | 0x55 | 1 | | |
+| MOV A, (NNNN) | 0x56 0xNN 0xNN | 3 | | |
+| MOV (BC), A | 0x57 | 1 | | |
+| MOV (DE), A | 0x58 | 1 | | |
+| MOV (NNNN), A | 0x59 0xNN 0xNN | 3 | | |
+| MOV HL, NNNN | 0x5A 0xNN 0xNN | 3 | | |
+| MOV BC, NNNN | 0x5B 0xNN 0xNN | 3 | | |
+| MOV DE, NNNN | 0x5C 0xNN 0xNN | 3 | | |
+| ADD A, A | 0x5D | 1 | Add | destination += source |
+| ADD A, B | 0x5E | 1 | | |
+| ADD A, C | 0x5F | 1 | | |
+| ADD A, D | 0x60 | 1 | | |
+| ADD A, E | 0x61 | 1 | | |
+| ADD A, H | 0x62 | 1 | | |
+| ADD A, L | 0x63 | 1 | | |
+| ADD A, NN | 0x64 0xNN | 2 | | |
+| ADD A, (HL) | 0x65 | 1 | | |
+| ADD HL, HL | 0x66 | 1 | | |
+| ADD HL, BC | 0x67 | 1 | | |
+| ADD HL, DE | 0x68 | 1 | | |
