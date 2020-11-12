@@ -120,3 +120,113 @@ description description description
 | ADD HL, HL | 0x66 | 1 | | |
 | ADD HL, BC | 0x67 | 1 | | |
 | ADD HL, DE | 0x68 | 1 | | |
+| ADD HL, NNNN | 0x69 0xNN 0xNN | 3 | | |
+| SUB A, A | 0x6A | 1 | Subtract | destination -= source |
+| SUB A, B | 0x6B | 1 | | |
+| SUB A, C | 0x6C | 1 | | |
+| SUB A, D | 0x6D | 1 | | |
+| SUB A, E | 0x6E | 1 | | |
+| SUB A, H | 0x6F | 1 | | |
+| SUB A, L | 0x70 | 1 | | |
+| SUB A, NN | 0x71 0xNN | 2 | | |
+| SUB A, (HL) | 0x72 | 1 | | |
+| SUB HL, HL | 0x73 | 1 | | |
+| SUB HL, BC | 0x74 | 1 | | |
+| SUB HL, DE | 0x75 | 1 | | |
+| SUB HL, NNNN | 0x76 0xNN 0xNN | 3 | | |
+| AND A, A | 0x77 | 1 | Bitwise And | destination &= source |
+| AND A, B | 0x78 | 1 | | |
+| AND A, C | 0x79 | 1 | | |
+| AND A, D | 0x7A | 1 | | |
+| AND A, E | 0x7B | 1 | | |
+| AND A, H | 0x7C | 1 | | |
+| AND A, L | 0x7D | 1 | | |
+| AND A, NN | 0x7E 0xNN | 2 | | |
+| AND A, (HL) | 0x7F | 1 | | |
+| OR A, A | 0x80 | 1 | Bitwise Or | destination \|= source |
+| OR A, B | 0x81 | 1 | | |
+| OR A, C | 0x82 | 1 | | |
+| OR A, D | 0x83 | 1 | | |
+| OR A, E | 0x84 | 1 | | |
+| OR A, H | 0x85 | 1 | | |
+| OR A, L | 0x86 | 1 | | |
+| OR A, NN | 0x87 0xNN | 2 | | |
+| OR A, (HL) | 0x88 | 1 | | |
+| XOR A, A | 0x89 | 1 | Bitwise Exclusive Or | destination ^= source |
+| XOR A, B | 0x8A | 1 | | |
+| XOR A, C | 0x8B | 1 | | |
+| XOR A, D | 0x8C | 1 | | |
+| XOR A, E | 0x8D | 1 | | |
+| XOR A, H | 0x8E | 1 | | |
+| XOR A, L | 0x8F | 1 | | |
+| XOR A, NN | 0x90 0xNN | 2 | | |
+| XOR A, (HL) | 0x91 | 1 | | |
+| INC A | 0x92 | 1 | Increment | destination++ |
+| INC B | 0x93 | 1 | | |
+| INC C | 0x94 | 1 | | |
+| INC D | 0x95 | 1 | | |
+| INC E | 0x96 | 1 | | |
+| INC H | 0x97 | 1 | | |
+| INC L | 0x98 | 1 | | |
+| INC HL | 0x99 | 1 | | |
+| INC BC | 0x9A | 1 | | |
+| INC DE | 0x9B | 1 | | |
+| DEC A | 0x9C | 1 | Decrement | destination-- |
+| DEC B | 0x9D | 1 | | |
+| DEC C | 0x9E | 1 | | |
+| DEC D | 0x9F | 1 | | |
+| DEC E | 0xA0 | 1 | | |
+| DEC H | 0xA1 | 1 | | |
+| DEC L | 0xA2 | 1 | | |
+| DEC HL | 0xA3 | 1 | | |
+| DEC BC | 0xA4 | 1 | | |
+| DEC DE | 0xA5 | 1 | | |
+| SL A | 0xA6 | 1 | Bitwise Shift Left | destination <<= 1 |
+| SL B | 0xA7 | 1 | | |
+| SL C | 0xA8 | 1 | | |
+| SL D | 0xA9 | 1 | | |
+| SL E | 0xAA | 1 | | |
+| SL H | 0xAB | 1 | | |
+| SL L | 0xAC | 1 | | |
+| SR A | 0xAD | 1 | Bitwise Shift Right | destination >>= 1 |
+| SR B | 0xAE | 1 | | |
+| SR C | 0xAF | 1 | | |
+| SR D | 0xB0 | 1 | | |
+| SR E | 0xB1 | 1 | | |
+| SR H | 0xB2 | 1 | | |
+| SR L | 0xB3 | 1 | | |
+| CP A | 0xB4 | 1 | Compare | |
+| CP B | 0xB5 | 1 | | |
+| CP C | 0xB6 | 1 | | |
+| CP D | 0xB7 | 1 | | |
+| CP E | 0xB8 | 1 | | |
+| CP H | 0xB9 | 1 | | |
+| CP L | 0xBA | 1 | | |
+| CP NN | 0xBB NN | 2 | | |
+| CP (HL) | 0xBC | 1 | | |
+| JP NNNN | 0xBD 0xNN 0xNN | 3 | Jump | programCounter = source |
+| JP HL | 0xBE | 1 | | |
+| JC NNNN | 0xBF 0xNN 0xNN | 3 | Jump if Carry | if carry then programCounter = source |
+| JC HL | 0xC0 | 1 | | |
+| JZ NNNN | 0xC1 0xNN 0xNN | 3 | Jump if Zero | if zero then programCounter = source |
+| JZ HL | 0xC2 | 1 | | |
+| JN NNNN | 0xC3 0xNN 0xNN | 3 | Jump if Not Zero | if not zero then programCounter = source |
+| JN HL | 0xC4 | 1 | | |
+| CALL NNNN | 0xC5 0xNN 0xNN | 3 | Call | push programCounter; programCounter = source |
+| CALL HL | 0xC6 | 1 | | |
+| RET | 0xC7 | 1 | Return | pop programCounter |
+| DUMPR | 0xC8 | 1 | Dump Registers | |
+| DUMPM NNNN | 0xC9 0xNN 0xNN | 3 | Dump Memory | |
+| SLP | 0xCA | 1 | Sleep | |
+| SWAP A | 0xCB | 1 | Swap | A = destination; destination = A |
+| SWAP B | 0xCC | 1 | | |
+| SWAP C | 0xCD | 1 | | |
+| SWAP D | 0xCE | 1 | | |
+| SWAP E | 0xCF | 1 | | |
+| SWAP H | 0xD0 | 1 | | |
+| SWAP L | 0xD1 | 1 | | |
+| SWAP (HL) | 0xD2 | 1 | | |
+| SWAP HL | 0xD3 | 1 | Swap (16-bit) | HL = destination; destination = HL |
+| SWAP BC | 0xD4 | 1 | | |
+| SWAP DE | 0xD5 | 1 | | |
+| DBG | 0xD6 | 1 | Debug | |
