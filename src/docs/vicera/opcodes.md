@@ -3,15 +3,43 @@ still todo
 
 ## Opcode reference
 
-description description description
+This page lists the usage of opcodes from the VIC-8P CPU.
 
-### Table of Contents
+### HALT
 
- - table
- - of
- - contents
+Stops everything and closes the VICERA.
 
-### Reference
+### NOP
+
+Does nothing.
+
+### PUSH / PUSHA
+
+Sets the high byte of the source to the memory address SP - 1, and the low byte of the source to the memory address SP. Then, SP gets decremented by 2.
+
+```
+mov sp, 0x9004
+mov hl, 0xBEEF
+push hl
+
+;                    vv SP
+; 0x9000 00 00 00 be ef 00 00 00 00 00 00 00 00 00 00 00
+;                 ^H ^L
+```
+
+PUSHA pushes HL, BC, DE in one instruction. It is the equivalent of:
+
+```
+push hl
+push bc
+push de
+```
+
+### POP / POPA
+
+todo (including the rest of instructions)
+
+### Full Reference
 
 | Instruction | Opcode | Length | Description | Notes |
 |----|----|----|----|----|
@@ -204,17 +232,17 @@ description description description
 | CP L | 0xBA | 1 | | |
 | CP NN | 0xBB 0xNN | 2 | | |
 | CP (HL) | 0xBC | 1 | | |
-| JP NNNN | 0xBD 0xNN 0xNN | 3 | Jump | programCounter = source |
+| JP NNNN | 0xBD 0xNN 0xNN | 3 | Jump | pc = source |
 | JP HL | 0xBE | 1 | | |
-| JC NNNN | 0xBF 0xNN 0xNN | 3 | Jump if Carry | if carry then programCounter = source |
+| JC NNNN | 0xBF 0xNN 0xNN | 3 | Jump if Carry | if carry then pc = source |
 | JC HL | 0xC0 | 1 | | |
-| JZ NNNN | 0xC1 0xNN 0xNN | 3 | Jump if Zero | if zero then programCounter = source |
+| JZ NNNN | 0xC1 0xNN 0xNN | 3 | Jump if Zero | if zero then pc = source |
 | JZ HL | 0xC2 | 1 | | |
-| JN NNNN | 0xC3 0xNN 0xNN | 3 | Jump if Not Zero | if not zero then programCounter = source |
+| JN NNNN | 0xC3 0xNN 0xNN | 3 | Jump if Not Zero | if not zero then pc = source |
 | JN HL | 0xC4 | 1 | | |
-| CALL NNNN | 0xC5 0xNN 0xNN | 3 | Call | push programCounter; programCounter = source |
+| CALL NNNN | 0xC5 0xNN 0xNN | 3 | Call | push pc; pc = source |
 | CALL HL | 0xC6 | 1 | | |
-| RET | 0xC7 | 1 | Return | pop programCounter |
+| RET | 0xC7 | 1 | Return | pop pc |
 | DUMPR | 0xC8 | 1 | Dump Registers | |
 | DUMPM NNNN | 0xC9 0xNN 0xNN | 3 | Dump Memory | |
 | SLP | 0xCA | 1 | Sleep | |
