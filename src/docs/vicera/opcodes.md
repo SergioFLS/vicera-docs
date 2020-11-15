@@ -17,14 +17,14 @@ description description description
 |----|----|----|----|----|
 | HALT | 0x00 | 1 | Halt | |
 | NOP | 0x01 | 1 | No Operation | |
-| PUSH HL | 0x02 | 1 | Push | |
+| PUSH HL | 0x02 | 1 | Push | (sp) = source; sp -= 2|
 | PUSH BC | 0x03 | 1 | | |
 | PUSH DE | 0x04 | 1 | | |
-| PUSHA | 0x05 | 1 | Push All | |
-| POP HL | 0x06 | 1 | Pop
+| PUSHA | 0x05 | 1 | Push All | push hl, bc, de |
+| POP HL | 0x06 | 1 | Pop | sp += 2; destination = (sp) |
 | POP BC | 0x07 | 1 | | |
 | POP DE | 0x08 | 1 | | |
-| POPA | 0x09 | 1 | Pop All | |
+| POPA | 0x09 | 1 | Pop All | pop de, bc, hl |
 | MOV A, A | 0x0A | 1 | Move | destination = source |
 | MOV A, B | 0x0B | 1 | | |
 | MOV A, C | 0x0C | 1 | | |
@@ -108,7 +108,7 @@ description description description
 | MOV HL, NNNN | 0x5A 0xNN 0xNN | 3 | | |
 | MOV BC, NNNN | 0x5B 0xNN 0xNN | 3 | | |
 | MOV DE, NNNN | 0x5C 0xNN 0xNN | 3 | | |
-| ADD A, A | 0x5D | 1 | Add | destination += source |
+| ADD A, A | 0x5D | 1 | Add | destination += source; if result == 0 then zero; if overflow then carry |
 | ADD A, B | 0x5E | 1 | | |
 | ADD A, C | 0x5F | 1 | | |
 | ADD A, D | 0x60 | 1 | | |
@@ -121,7 +121,7 @@ description description description
 | ADD HL, BC | 0x67 | 1 | | |
 | ADD HL, DE | 0x68 | 1 | | |
 | ADD HL, NNNN | 0x69 0xNN 0xNN | 3 | | |
-| SUB A, A | 0x6A | 1 | Subtract | destination -= source |
+| SUB A, A | 0x6A | 1 | Subtract | destination -= source; if result == 0 then zero; if overflow then carry |
 | SUB A, B | 0x6B | 1 | | |
 | SUB A, C | 0x6C | 1 | | |
 | SUB A, D | 0x6D | 1 | | |
@@ -195,14 +195,14 @@ description description description
 | SR E | 0xB1 | 1 | | |
 | SR H | 0xB2 | 1 | | |
 | SR L | 0xB3 | 1 | | |
-| CP A | 0xB4 | 1 | Compare | |
+| CP A | 0xB4 | 1 | Compare | if a == source then zero; if a < source then carry |
 | CP B | 0xB5 | 1 | | |
 | CP C | 0xB6 | 1 | | |
 | CP D | 0xB7 | 1 | | |
 | CP E | 0xB8 | 1 | | |
 | CP H | 0xB9 | 1 | | |
 | CP L | 0xBA | 1 | | |
-| CP NN | 0xBB NN | 2 | | |
+| CP NN | 0xBB 0xNN | 2 | | |
 | CP (HL) | 0xBC | 1 | | |
 | JP NNNN | 0xBD 0xNN 0xNN | 3 | Jump | programCounter = source |
 | JP HL | 0xBE | 1 | | |
