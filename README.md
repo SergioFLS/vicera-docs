@@ -1,7 +1,7 @@
 # Official VICERA documentation
 
 This repo will contain the whole Markdown source of the VICERA documentation.
-Once mature enough to be published, the documentation will be published [here](https://h3liu.ml/vicera/docs).
+Once mature enough to be published, the documentation will be published [here](https://cutebunni.es/vicera/docs).
 
 ### TODO List
 
